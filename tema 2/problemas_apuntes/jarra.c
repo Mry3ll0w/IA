@@ -9,7 +9,7 @@ tEstado *estadoInicial() {
 
 int testObjetivo(tEstado *estado){
     return(estado->J4==2);
-} //testObjetivo
+} //testObjetivo ==> ¿Cuando se ha llegado a los objetivos?
 
 // restricciones para realizar el movimiento
 //Cmprueba si es posible realizar x estado (declarado en los define)
