@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "3puzzle.h"
 int main(){
 
 }

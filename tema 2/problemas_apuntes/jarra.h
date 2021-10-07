@@ -17,7 +17,7 @@
 typedef struct tEstado {
     int J4, J3;
 }tEstado;
-
+//cabeceras y demas bullshit
 tEstado *estadoInicial();
 int testObjetivo(tEstado *estado);
 int esValido(unsigned op, tEstado*s);

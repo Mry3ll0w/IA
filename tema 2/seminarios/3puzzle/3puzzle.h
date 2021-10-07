@@ -1,9 +1,9 @@
-
 #include <stdlib.h>
 #include <stdio.h>
-//operaciones permitidas
+//variables
 #define N 2
 #define vacio 0
+//operaciones
 #define ARRIBA 1
 #define ABAJO 2
 #define IZQUIERDA 3
@@ -20,7 +20,8 @@ typedef struct tEstado{
         0 1                             0   1   2   3 <- Representa los numeros dados 
         3 2   elemento 0 -->   filas    0   0   1   1
                                cols     0   1   1   0
-    */                         
+    */      
+   int tablero_final[N][N];                   
 }tEstado;
 
 //cabeceras de funciones
