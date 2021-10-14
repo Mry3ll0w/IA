@@ -1,0 +1,38 @@
+Tema 3: Estrategia De Búsqueda No Informada
+
+- Introduccion a estrategias de búsqueda -> Introduccion a búsqueda con informacion
+
+-   Busqueda No informada (A ciegas) --> Exploracion sistemática del espacio de búsqueda, pero sin informacion
+    que ayude a determinar que camino seguir.
+    Se empieza a recorrer de izquierda a derecha, al no disponer de aristas ponderadas.
+    
+
+-   Busqueda Informada --> Se evalua en cada momento el estado que pudiera ser mejor usando cierta
+    informacion dada previamente.
+
+-   Medidas del Rendimiento: 
+        · Completa: La estrategia garantiza que encuentra al menos una solucion.
+        · Óptima: Encuentra la solucion más óptima.
+        · Complejidad en tiempo: Número de nodos generados durante la búsqueda.
+        · Complejidad en espacio: max numero de nodos en memoria.
+
+-   Estrategia de búsqueda no informada: 
+    ·Se usan nodos y árboles (EDNL nibbas), con una serie de acciones y métodos concretos
+     (mirar transparencias).A priori Arboles generales ( en muchos casos binarios).
+    
+    · Expandir en el algoritmo de búsqueda ==> Coge los hijos del nodo actual (solo los inmediatamente 
+    inferiores, "no se sabe lo que hay debajo").
+
+    · Mirar e implementar el algoritmo de busqueda de las transparencias, 
+      clase nodo==> viene dada.
+
+- Mirar busqueda en anchura en transparencias (algoritmo)
+
+- Cada ramificacion del arbol es un posible estado de aquello que queremos obtener.
+
+-   Busqueda En Profundidad:
+        · Se usa una LIFO(Pila), itera en vez a lo ancho intera con los hijos de cada nodo
+
+
+     
+
