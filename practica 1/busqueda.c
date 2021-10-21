@@ -5,9 +5,6 @@
 /* Grado en Ingenieria Informatica - UCA   */
 /*******************************************/
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "puzle.h"
 #include "listaia.h"
@@ -80,18 +77,24 @@ int busqueda(){
 
     LISTA Abiertos= VACIA;
     LISTA Sucesores= VACIA;
+    LISTA Cerrados = VACIA;
+
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     while (!esVacia(Abiertos) && !objetivo){
         Actual=(tNodo*) calloc(1,sizeof(tNodo));
         ExtraerPrimero(Abiertos,Actual, sizeof(tNodo));
         EliminarPrimero(&Abiertos);
+        
         objetivo=testObjetivo(Actual->estado);
+        visitados++;
+        //dispOperador(Actual->operador);
+        //dispEstado(Actual->estado);
         if (!objetivo){
             Sucesores = expandir(Actual);
             Abiertos=Concatenar(Abiertos,Sucesores);
       }
    }//while
-   
+
     printf("\nVisitados= %d\n", visitados);
     if (objetivo)
         dispSolucion(Actual);

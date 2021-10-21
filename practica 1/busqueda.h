@@ -5,6 +5,9 @@
 /* Grado en Ingenieria Informatica - UCA   */
 /*******************************************/
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 #ifndef _tNodo_
 #define _tNodo_

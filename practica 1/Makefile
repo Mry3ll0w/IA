@@ -4,7 +4,7 @@ wsl:
 	gcc main.c busqueda.c puzleAlum.c listaia.c -o main -lm
 
 debug:
-	gcc -g main.c busqueda.c puzleAlum.c listaia.c -o main
+	gcc -Wall -g main.c busqueda.c puzleAlum.c listaia.c -o main
 	gdb ./main
 	
 clean_win: 

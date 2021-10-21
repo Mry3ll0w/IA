@@ -26,9 +26,9 @@
 #define fix
 static int puzle_inicial[N][N]=
 {
-  {1,7,3},
-  {6,2,4},
-  {8,5,0}
+  {1,2,3},
+  {7,8,0},
+  {6,5,4}
 };
 #endif
 
@@ -77,3 +77,8 @@ int iguales(tEstado *s, tEstado *t);
 
 /* Devuelve 1 si un estado es igual al estado objetivo. */
 int testObjetivo(tEstado *estado);
+
+/*
+Búsqueda en Anchura con Control de Estados Repetido
+*/
+//int estado_repetido(LISTA l,tEstado *e);

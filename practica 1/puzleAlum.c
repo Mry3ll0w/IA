@@ -109,7 +109,7 @@ return token;
 
 int esValido(unsigned op, tEstado *estado)
 {
-   int valido=0;//token bool 
+   int valido=0;//token bool
     switch(op){
         case ARRIBA://Necesitamos comprobar donde esta el hueco
             valido = (estado->fila[0]>vacio);//Si hay un hueco esta en la filas superior
@@ -123,7 +123,7 @@ int esValido(unsigned op, tEstado *estado)
         case DERECHA:
             valido = (estado->col[0]<N-1);
         break; // CUANDO Mueves de derecha izquierda cambias de columna y arriba/abajo cambias de fila
-        default: 
+        default:
         break;
     }
     return valido;
@@ -134,32 +134,32 @@ tEstado *aplicaOperador(unsigned op, tEstado *estado)
 {
    tEstado *nuevo= (tEstado *) malloc(sizeof(tEstado));
    memcpy(nuevo, estado,sizeof(tEstado));  // Hace una copia del estado
-   
+
    int ficha;
    switch(op)
    {
-      case ARRIBA: 
+      case ARRIBA:
       //1 metemos en ficha el anterior para hacerle swap con el siguiente
-         ficha = estado->celdas[estado->fila[0]-1][estado->col[0]]; 
-         nuevo->fila[0]--;//decrementamos el valor de fila pq se ha cambiado 
+         ficha = estado->celdas[estado->fila[0]-1][estado->col[0]];
+         nuevo->fila[0]--;//decrementamos el valor de fila pq se ha cambiado
          nuevo->fila[ficha]++; //actulizar valor de ficha
       break;
 
       case ABAJO: //RECIPROCO de Arriba (Arriba inverso y ya)
-         ficha = estado->celdas[estado->fila[0]+1][estado->col[0]]; 
-         nuevo->fila[0]++; 
-         nuevo->fila[ficha]--; 
+         ficha = estado->celdas[estado->fila[0]+1][estado->col[0]];
+         nuevo->fila[0]++;
+         nuevo->fila[ficha]--;
       break;
 
-      case IZQUIERDA: 
+      case IZQUIERDA:
          //Realizamos lo mismo que en arriba pero en caso de desp izq/dch se modifican las cols no fila
-         ficha = estado->celdas[estado->fila[0]][estado->col[0]-1]; 
-         nuevo->col[0]--; 
+         ficha = estado->celdas[estado->fila[0]][estado->col[0]-1];
+         nuevo->col[0]--;
          nuevo->col[ficha]++;
       break;
-      case DERECHA:  
-         ficha = estado->celdas[estado->fila[0]][estado->col[0]+1]; 
-         nuevo->col[0]++; 
+      case DERECHA:
+         ficha = estado->celdas[estado->fila[0]][estado->col[0]+1];
+         nuevo->col[0]++;
          nuevo->col[ficha]--;
       break;
     }
@@ -168,10 +168,15 @@ tEstado *aplicaOperador(unsigned op, tEstado *estado)
     nuevo->celdas[nuevo->fila[0]][nuevo->col[0]] = 0;
     nuevo->celdas[nuevo->fila[ficha]][nuevo->col[ficha]] = ficha;
 
-    return nuevo;
+
 return nuevo;
 }
 
+/*
+Búsqueda en Anchura con Control de Estados Repetido
+*/
+//int estado_repetido(LISTA l,tEstado *e){
 
+//}
 
 
