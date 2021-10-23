@@ -24,3 +24,5 @@ typedef struct NodoBusqueda_{
 
 int busqueda(void);
 void solucionFin(int res);
+int busqueda_anchura_rep();
+int busqueda_profundidad();

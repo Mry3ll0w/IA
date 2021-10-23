@@ -172,11 +172,4 @@ tEstado *aplicaOperador(unsigned op, tEstado *estado)
 return nuevo;
 }
 
-/*
-Búsqueda en Anchura con Control de Estados Repetido
-*/
-//int estado_repetido(LISTA l,tEstado *e){
-
-//}
-
 

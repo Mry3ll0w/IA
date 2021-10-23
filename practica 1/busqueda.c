@@ -17,10 +17,12 @@ void solucionFin(int res){
    else
       printf("No se ha llegado al objetivo\n");
 }
+
 void dispNodo(tNodo *nodo){
     dispEstado(nodo->estado);
     printf("\n");
 }
+
 void dispCamino(tNodo *nodo){
     if (nodo->padre==NULL){
         printf("\n Desde el inicio\n");
@@ -70,6 +72,7 @@ LISTA expandir(tNodo *nodo){
 return sucesores;
 }
 
+
 int busqueda(){
     int objetivo=0, visitados=0;
     tNodo *Actual=(tNodo*) calloc(1,sizeof(tNodo));
@@ -77,7 +80,6 @@ int busqueda(){
 
     LISTA Abiertos= VACIA;
     LISTA Sucesores= VACIA;
-    LISTA Cerrados = VACIA;
 
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     while (!esVacia(Abiertos) && !objetivo){
@@ -92,7 +94,114 @@ int busqueda(){
         if (!objetivo){
             Sucesores = expandir(Actual);
             Abiertos=Concatenar(Abiertos,Sucesores);
+        }
+   }//while
+
+    printf("\nVisitados= %d\n", visitados);
+    if (objetivo)
+        dispSolucion(Actual);
+    free(Sucesores);
+    free(Inicial);
+    free(Actual);
+    return objetivo;
+}
+
+
+
+
+
+/* -------------------- IMPLEMENTACIONES DEL EJERCICIO 3 -------------------- */
+/*
+Búsqueda en Anchura con Control de Estados Repetido
+    Si existe algun repetido entonces devuelve 0
+*/
+int estado_repetido(LISTA cerrados, tNodo* nodo)
+{
+    int res=0;
+    tNodo * aux= (tNodo*) calloc (1,sizeof(tNodo));
+    LISTA actual = cerrados;
+    
+    while(!esVacia(actual) && !res)
+    {
+        ExtraerPrimero(actual,aux,sizeof(tNodo));
+        if(iguales(aux->estado, nodo->estado))
+        {
+            res=1;
+        }
+        else
+        {
+            //siguiente(&actual, &actual);
+            actual = actual->next;
+        }
+    }
+    return res;
+}
+
+/* -------------- BUSQUEDA EN ANCHURA CON CONTROL DE REPETIDOS -------------- */
+int busqueda_anchura_rep(){
+    int objetivo=0, visitados=0;
+    tNodo *Actual=(tNodo*) calloc(1,sizeof(tNodo));
+    tNodo *Inicial=nodoInicial();
+
+    LISTA Abiertos= VACIA;
+    LISTA Sucesores= VACIA;
+    LISTA Cerrados = VACIA;
+
+    InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
+    while (!esVacia(Abiertos) && !objetivo){
+        Actual=(tNodo*) calloc(1,sizeof(tNodo));
+        ExtraerPrimero(Abiertos,Actual, sizeof(tNodo));
+
+        InsertarPrimero(&Cerrados,Actual,sizeof(tNodo));
+        
+        EliminarPrimero(&Abiertos);
+        
+        objetivo=testObjetivo(Actual->estado);
+        visitados++;
+        //dispOperador(Actual->operador);
+        //dispEstado(Actual->estado);
+        if (!objetivo){
+            if(estado_repetido(Cerrados,Actual)==0){//si no esta repetido entonces expande
+                Sucesores = expandir(Actual);
+            }
+            Abiertos=Concatenar(Abiertos,Sucesores);
       }
+   }//while
+
+    printf("\nVisitados= %d\n", visitados);
+    if (objetivo)
+        dispSolucion(Actual);
+    free(Sucesores);
+    free(Inicial);
+    free(Actual);
+    return objetivo;
+}
+
+/* ---------------- BUSQUEDA EN PROFUNDIDAD EN VEZ DE ANCHURA --------------- */
+//CUIDADO CON EL LA MATRIZ RESULTADO QUE NO ACABA PRONTO
+int busqueda_profundidad(){
+    int objetivo=0, visitados=0;
+    tNodo *Actual=(tNodo*) calloc(1,sizeof(tNodo));
+    tNodo *Inicial=nodoInicial();
+
+    LISTA Abiertos= VACIA;
+    LISTA Sucesores= VACIA;
+
+    InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
+    while (!esVacia(Abiertos) && !objetivo){
+        Actual=(tNodo*) calloc(1,sizeof(tNodo));
+        ExtraerPrimero(Abiertos,Actual, sizeof(tNodo));
+        EliminarPrimero(&Abiertos);
+        
+        objetivo=testObjetivo(Actual->estado);
+        visitados++;
+        //dispOperador(Actual->operador);
+        //dispEstado(Actual->estado);
+        if (!objetivo){
+            Sucesores = expandir(Actual);
+            //Abiertos=Concatenar(Abiertos,Sucesores);//anchura
+            Abiertos = Concatenar(Sucesores,Abiertos);//profundidad
+        }
    }//while
 
     printf("\nVisitados= %d\n", visitados);
