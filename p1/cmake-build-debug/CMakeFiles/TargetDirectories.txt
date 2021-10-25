@@ -1,0 +1,3 @@
+C:/Users/anton/OneDrive/Escritorio/IA/p1/cmake-build-debug/CMakeFiles/p1.dir
+C:/Users/anton/OneDrive/Escritorio/IA/p1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/anton/OneDrive/Escritorio/IA/p1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
