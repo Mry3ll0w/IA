@@ -177,7 +177,7 @@ int busqueda_anchura_rep(){
     return objetivo;
 }
 
-/* ---------------- BUSQUEDA EN PROFUNDIDAD EN VEZ DE ANCHURA --------------- */
+/* ---------------- BUSQUEDA EN PROFUNDIDAD EN VEZ DE ANCHURA CON ESTADOS REPETIDOS --------------- */
 //CUIDADO CON EL LA MATRIZ RESULTADO QUE NO ACABA PRONTO
 int busqueda_profundidad(){
     int objetivo=0, visitados=0;
@@ -186,7 +186,7 @@ int busqueda_profundidad(){
 
     LISTA Abiertos= VACIA;
     LISTA Sucesores= VACIA;
-
+    LISTA Cerrados= VACIA;
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     while (!esVacia(Abiertos) && !objetivo){
         Actual=(tNodo*) calloc(1,sizeof(tNodo));
@@ -195,11 +195,12 @@ int busqueda_profundidad(){
         
         objetivo=testObjetivo(Actual->estado);
         visitados++;
-        //dispOperador(Actual->operador);
-        //dispEstado(Actual->estado);
-        if (!objetivo){
+        dispOperador(Actual->operador);
+        dispEstado(Actual->estado);
+        if(!objetivo&&estado_repetido(Cerrados,Actual)==0){
+            //si no esta repetido entonces expande
             Sucesores = expandir(Actual);
-            //Abiertos=Concatenar(Abiertos,Sucesores);//anchura
+            InsertarPrimero(&Cerrados,Actual,sizeof(tNodo));
             Abiertos = Concatenar(Sucesores,Abiertos);//profundidad
         }
    }//while
@@ -222,6 +223,7 @@ int busqueda_profundidad_limitada(int limite){
 
     LISTA Abiertos= VACIA;
     LISTA Sucesores= VACIA;
+    LISTA Cerrados = VACIA;
 
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     while (!esVacia(Abiertos) && !objetivo && (limite >0)){
@@ -233,9 +235,10 @@ int busqueda_profundidad_limitada(int limite){
         visitados++;
         dispOperador(Actual->operador);
         dispEstado(Actual->estado);
-        if (!objetivo){
+        if(!objetivo&&estado_repetido(Cerrados,Actual)==0){
+            //si no esta repetido entonces expande
             Sucesores = expandir(Actual);
-            //Abiertos=Concatenar(Abiertos,Sucesores);//anchura
+            InsertarPrimero(&Cerrados,Actual,sizeof(tNodo));
             Abiertos = Concatenar(Sucesores,Abiertos);//profundidad
             limite--;
         }
@@ -261,6 +264,7 @@ int busqueda_profundidad_limitada_iterativa(){
 
     LISTA Abiertos= VACIA;
     LISTA Sucesores= VACIA;
+    LISTA Cerrados = VACIA;
 
     InsertarPrimero(&Abiertos,(tNodo*) Inicial,sizeof(tNodo));
     while (!esVacia(Abiertos) && !objetivo ){
@@ -273,15 +277,18 @@ int busqueda_profundidad_limitada_iterativa(){
         dispOperador(Actual->operador);
         dispEstado(Actual->estado);
 
-        if (!objetivo){
+        if(!objetivo&&estado_repetido(Cerrados,Actual)==0){
             if(limite <= 0){
                 limite = limite_inicial + 1;
             }
+            //si no esta repetido entonces expande
             Sucesores = expandir(Actual);
-            //Abiertos=Concatenar(Abiertos,Sucesores);//anchura
+            InsertarPrimero(&Cerrados,Actual,sizeof(tNodo));
             Abiertos = Concatenar(Sucesores,Abiertos);//profundidad
             limite--;
         }
+
+
    }//while
 
     printf("\nVisitados= %d\n", visitados);

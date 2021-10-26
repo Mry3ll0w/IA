@@ -6,29 +6,35 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/anton/OneDrive/Escritorio/IA/p1/busqueda.c
+C:/Users/anton/OneDrive/Escritorio/IA/p1/busqueda.h
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+
+C:/Users/anton/OneDrive/Escritorio/IA/p1/listaia.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+C:/Users/anton/OneDrive/Escritorio/IA/p1/main.c
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
 puzle.h
 C:/Users/anton/OneDrive/Escritorio/IA/p1/puzle.h
 listaia.h
 C:/Users/anton/OneDrive/Escritorio/IA/p1/listaia.h
 busqueda.h
 C:/Users/anton/OneDrive/Escritorio/IA/p1/busqueda.h
-
-C:/Users/anton/OneDrive/Escritorio/IA/p1/busqueda.h
-stdlib.h
--
-stdio.h
--
-string.h
--
-
-C:/Users/anton/OneDrive/Escritorio/IA/p1/listaia.h
-stdio.h
--
-stdlib.h
--
-string.h
--
 
 C:/Users/anton/OneDrive/Escritorio/IA/p1/puzle.h
 

@@ -16,7 +16,8 @@
 int main(){
     //solucionFin(busqueda());
     //solucionFin(busqueda_anchura_rep());
+    solucionFin(busqueda_profundidad());
     //solucionFin(busqueda_profundidad_limitada(8));
-    solucionFin(busqueda_profundidad_limitada_iterativa());
+    //solucionFin(busqueda_profundidad_limitada_iterativa());
     return 0;
 }

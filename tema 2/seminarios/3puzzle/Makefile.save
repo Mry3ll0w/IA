@@ -1,5 +1,0 @@
-make: 
-	gcc main.c 3puzzle.h 3puzzle.c -o main -lm 
-	./main.exe
-wsl:
-	ej->tablero[i][j];
