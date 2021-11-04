@@ -1,0 +1,19 @@
+1 el banco coge el lateral de la derecha
+2 solo se puede coger de los extremos
+DADO
+    vec [4,3,2,5,7,1,8,6]
+    
+CONSTANTES
+N tamaño del vector
+operadores
+    1 coger_izqu
+    2 coger_derecha
+numero de operadores = 2
+
+struct tEstado{
+    int cinta[N];
+    int lado_izq; //extremos cambiantes
+    int lado_dcha;
+    int cant_robado;//ladrones
+    int recuperado; //banco
+}tEstado;
