@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/anton/OneDrive/Escritorio/IA/Practicas Adversario/minimaxAlum.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+tictactoe.h
+C:/Users/anton/OneDrive/Escritorio/IA/Practicas Adversario/tictactoe.h
+
+C:/Users/anton/OneDrive/Escritorio/IA/Practicas Adversario/tictactoe.h
+
