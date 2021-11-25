@@ -23,7 +23,9 @@ int main(){
     else
         jugador=1; // Turno de Max
 
-    ganador=terminal(juego);
+    ganador=terminal(juego); // ¿Para que inicializar con ese valor ganador???
+
+    //Mientras que existan casillas vacias y ganador no sea "true"  
     while(juego->vacias>0 && ganador==0){
        if (jugador==1)
           juego=(tNodo *) PSEUDOminimax(juego);

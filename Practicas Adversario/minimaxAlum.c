@@ -19,20 +19,25 @@ tNodo *PSEUDOminimax(tNodo *t) {
      int i, temp;
      tNodo *intento=malloc(sizeof(tNodo));
      printf("\n Mi turno: \n");
-     for(i = 0; i < 9; ++i){
-      if (esValida(t,i)) {
-            intento=aplicaJugada(t,1,i); //Intenta jugada
-            temp =terminal(intento); // Calcula el valor minimax
-            if(temp > puntos) {
-              puntos = temp;
-              mejorJugada = i;
+
+     for(i = 0; i < 9; ++i){ // 9 Es el numero de casillas donde puedes colocar una ficha
+            //Va recorriendo todas las jugadas para obtener la de mejor heuristica/valor de utilidad 
+            if (esValida(t,i)){
+                  intento=aplicaJugada(t,1,i); //Intenta jugada
+                  temp = terminal(intento); // Calcula el valor minimax
+                  if(temp > puntos) {
+                        puntos = temp;
+                        mejorJugada = i;
+                  }
             }
-      }}//for
+
+      }//for
+      
       t=aplicaJugada(t,1,mejorJugada);
       return t;
 }
 
-tNodo *jugadaAdversario(tNodo *t) {
+tNodo *jugadaAdversario(tNodo *t) { //Seleccion de Jugada por parte del jugador (no agente inteligente)
      int jugada = 0;
      printf("\nJugada ([0..8])?: ");
      scanf("%d", &jugada);

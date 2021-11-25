@@ -11,44 +11,55 @@
 
 #include "tictactoe.h"
 
+//Llama a creanodo (por algun motivo no se llama directamente)
 tNodo *estadoInicial()
 {
    return crearNodo(tablero_inicial);
 }
 
+//Crea un Tnodo inicial para comenzar a operar sobre el tablero
 tNodo *crearNodo(int celdas[N])
 {
-   tNodo *Nodo = (tNodo *) malloc(sizeof(tNodo));
-   int i, c;
-   Nodo->vacias=0;
-   for (i=0;i<N;i++){
-         c=celdas[i];
-         Nodo->celdas[i]=c;
-         if (c==0)
-	      Nodo->vacias=Nodo->vacias+1;
-      }
-   return Nodo;
+    tNodo *Nodo = (tNodo *) malloc(sizeof(tNodo));//Reserva de memoria para el nuevo tNodo
+    int i, c;
+    Nodo->vacias=0;
+    for (i=0;i<N;i++){
+        c=celdas[i];
+        Nodo->celdas[i]=c;//Metemos el valor de celdas[i](input) en el nuevo nodo->celdas[i]
+        
+        //Si la celda esta vacia aumentamos en uno el nÂº de vacias
+        if (c==0)
+	        Nodo->vacias=Nodo->vacias+1;
+    }
+    return Nodo;
 }
 
-
+//Aplica la jugada deseada, donde la jugada va del 1 - 9 (nÂº de huecos del tic tac toe 3X3)
 tNodo *aplicaJugada(tNodo *actual, int jugador, int jugada){
     tNodo *nuevo = (tNodo *) malloc(sizeof(tNodo));
     memcpy(nuevo,actual,sizeof(tNodo));
-    nuevo->celdas[jugada]=jugador;
-    nuevo->vacias--;  // marca la posición que indica pone la marca del jugador
+    nuevo->celdas[jugada]=jugador;// marca la posicion que indica jugadas pone la marca del jugador
+    nuevo->vacias--;  
     return nuevo;
 }
+
+//Comprueba la validacion de una jugada
 int esValida(tNodo *actual, int jugada){
-    return (jugada>=0 && jugada<9 && actual->celdas[jugada]==0) ;  // si está vacía la posición, la jugada es válido
+    return (jugada>=0 && jugada<9 && actual->celdas[jugada]==0);
+    //si esta vacia la posicion, la jugada es valido
 }
+
+//Devuelve el opuesto al jugador 
 int opuesto( int jugador){
     return (jugador * -1);//Jugador 1 y Jugador -1
 }
 
+//Si el tablero esta vacio devuelve 1, si no lo esta 0
 int lleno(tNodo *tablero){
     return (tablero->vacias == 0);
 }
 
+//Preguntar en clase
 int terminal(tNodo *Nodo)
 {
     unsigned opciones[8][3] = {{0,1,2},{3,4,5},{6,7,8},{0,3,6},{1,4,7},{2,5,8},{0,4,8},{2,4,6}};
@@ -65,7 +76,7 @@ int terminal(tNodo *Nodo)
 }
 
 ////////////////////////////////////////
-//  VISUALIZACIÓN DE NodoS
+//  VISUALIZACIï¿½N DE NodoS
 ////////////////////////////////////////
 
 char marca(int i) {
