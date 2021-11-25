@@ -59,6 +59,7 @@ int lleno(tNodo *tablero){
     return (tablero->vacias == 0);
 }
 
+
 //Preguntar en clase
 int terminal(tNodo *Nodo)
 {
@@ -66,9 +67,9 @@ int terminal(tNodo *Nodo)
     int i=0,res=0;
     while (res==0 && i<8) {
       if(Nodo->celdas[opciones[i][0]] != 0 &&
-         Nodo->celdas[opciones[i][0]] == Nodo->celdas[opciones[i][1]] &&
-         Nodo->celdas[opciones[i][0]] == Nodo->celdas[opciones[i][2]])
-           res=Nodo->celdas[opciones[i][2]];  //indica que jugador ocupa las casillas ganadoras
+            Nodo->celdas[opciones[i][0]] == Nodo->celdas[opciones[i][1]] &&
+            Nodo->celdas[opciones[i][0]] == Nodo->celdas[opciones[i][2]])
+            res=Nodo->celdas[opciones[i][2]];  //indica que jugador ocupa las casillas ganadoras
       i++;
     }
     
@@ -99,6 +100,54 @@ void dispNodo(tNodo *b) {
      printf(" %c | %c | %c\n",marca(b->celdas[6]),marca(b->celdas[7]),marca(b->celdas[8]));
      printf("---+---+---\n\n");
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                 PRACTICA 6                                 */
+/* -------------------------------------------------------------------------- */
+
+
+int funcion_heuristica(tNodo *actual,int jugador)
+{
+    //El valor de la heuristica viene dado por el numero de filas que puede completar
+    /* Forma del tablero
+        p1  p2  p3      1   0   0       1 _ 1
+
+        p4  p5  p6
+
+        p7  p8  p9
+
+    */
+    //Usamos la matriz curseada WINNER
+    unsigned opciones[8][3] = {
+        {0,1,2}, 
+        {3,4,5},
+        {6,7,8},
+        {0,3,6},
+        {1,4,7},
+        {2,5,8},
+        {0,4,8},
+        {2,4,6}
+    };
+    int i=0,valHeuristica=0;
+    
+    //Comprobacion de todas la posibles combinaciones ganadoras (guardadas en la matriz winner)
+    while (i<8) {
+
+      if(actual->celdas[opciones[i][0]] == jugador &&
+        (actual->celdas[opciones[i][1]]== 0 ||  actual->celdas[opciones[i][1]]== jugador) &&
+        (actual->celdas[opciones[i][2]]== 0 ||  actual->celdas[opciones[i][2]]== jugador )
+        ){
+
+            valHeuristica++;  //Cuando se cumpla la igualdad superior entonces sabemos que la fila 
+        
+        }
+        ++i;
+    }
+
+    return valHeuristica;
+
+}
+
 
 
 

@@ -15,11 +15,11 @@ typedef struct tNodo {
 
 typedef struct tJugada {
         int pos;  // para enumerar cada una de las posibles jugadas NO SE USA EN MINIMAX
-} tJugada;   // POR SIMPLIFICAR NO SE USARç AQUê, PERO ES NECESARIO EN OTROS JUEGOS
+} tJugada;   // POR SIMPLIFICAR NO SE USARï¿½ AQUï¿½, PERO ES NECESARIO EN OTROS JUEGOS
 
 static int tablero_inicial[N] ={0,0,0, 0,0,0, 0,0,0};
 
-// las posiciones serán numeradas de 0 a 8 de la siguiente forma:
+// las posiciones serï¿½n numeradas de 0 a 8 de la siguiente forma:
 //0 1 2
 //3 4 5
 //6 7 8
@@ -33,7 +33,7 @@ tNodo *NodoInicial();
 /*tNodo *aplicaJugada(tNodo *actual, int jugador, int jugada)
  actual: es el tablero actual,
  jugador: la marca del jugador que tiene el turno
- jugada: indica en qué posición del tablero pondrá la marca
+ jugada: indica en quï¿½ posiciï¿½n del tablero pondrï¿½ la marca
  devuelve: el nuevo Nodo tras aplicar la jugada */
 tNodo *aplicaJugada(tNodo *actual, int jugador, int jugada);
 int esValida(tNodo *actual, int jugada);
@@ -43,7 +43,7 @@ int esValida(tNodo *actual, int jugada);
 // actual: tablero actual
 // jugador: 1 si es Max -1 si es Min
 //devuelve:  si ha gando MAX 100, si ha ganado MIN -100, empate 0
-// si no es terminal tambiŽn devuelve 0
+// si no es terminal tambiï¿½n devuelve 0
 int terminal(tNodo *actual);
 
 
@@ -51,6 +51,13 @@ int terminal(tNodo *actual);
 void dispNodo(tNodo *s);
 int opuesto( int jugador);
 int lleno(tNodo *s);
+
+/* -------------------------------------------------------------------------- */
+/*                                 PRACTICA 6                                 */
+/* -------------------------------------------------------------------------- */
+
+//Heuristica = Numero de filas que puedes colocar
+int funcion_heuristica(tNodo *actual, int jugador);
 
 
 
