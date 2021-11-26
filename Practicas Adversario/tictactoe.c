@@ -135,7 +135,8 @@ int funcion_heuristica(tNodo *actual,int jugador)
 
       if(actual->celdas[opciones[i][0]] == jugador &&
         (actual->celdas[opciones[i][1]]== 0 ||  actual->celdas[opciones[i][1]]== jugador) &&
-        (actual->celdas[opciones[i][2]]== 0 ||  actual->celdas[opciones[i][2]]== jugador )
+        (actual->celdas[opciones[i][2]]== 0 ||  actual->celdas[opciones[i][2]]== jugador )&&
+        (actual->celdas[opciones[i][0]]!=actual->celdas[opciones[i][1]]!=actual->celdas[opciones[i][2]])
         ){
 
             valHeuristica++;  //Cuando se cumpla la igualdad superior entonces sabemos que la fila 
