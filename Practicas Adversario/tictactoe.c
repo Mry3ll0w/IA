@@ -139,7 +139,7 @@ int funcion_heuristica(tNodo *actual,int jugador)
         (actual->celdas[opciones[i][0]]!=actual->celdas[opciones[i][1]]!=actual->celdas[opciones[i][2]])
         ){
 
-            valHeuristica++;  //Cuando se cumpla la igualdad superior entonces sabemos que la fila 
+            valHeuristica++;//Cuando se cumpla la igualdad superior entonces sabemos que la fila se puede rellenar
         
         }
         ++i;

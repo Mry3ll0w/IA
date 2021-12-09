@@ -36,6 +36,7 @@ int main(){
        ganador=terminal(juego);
        jugador=opuesto(jugador);// turno del adversario
     }
+    
     switch(ganador){
      case 100:
           printf("\n HE GANADOOOO\n"); break;
