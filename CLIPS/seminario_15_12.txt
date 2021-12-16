@@ -1,0 +1,23 @@
+Pacman (para representar en clips)
+    1) Definir plantillas para 
+        fantasma  (posx, pos y )
+        comecocos (default fruta comida = 0) 
+        fruta (posx , posy )
+
+    2) Reglas 
+        comer 
+            si pos fruta y pos comecocos es la misma ==> contador ++ y borro fruta(retract)
+        
+        Morir: 
+            si fantasma y comecocos esta en la misma pos ==> Comecocos muere y vuelve a pos 1,1
+
+Adelanto practica del dia 16/12/2021
+
+funciones (ejemplo de funcion de opuesto de un numero)
+
+    (deffunction opuesto (?valor )
+        (bind ?op (* ?valor -1))
+        (return ?op)
+    )
+
+BUCLES(WHILE/LOOP-FOR-COUNT)/IF&&ELSE/SWITCH

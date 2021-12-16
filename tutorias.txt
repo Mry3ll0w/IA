@@ -1,0 +1,11 @@
+Preguntas(9/12/21):
+
+1)Diferencias entre concepto valor de utilidad y heuristica
+	Heuristica nodo para alcanzar uana solucion.
+	Utilidad => Evaluacion de quien ha ganado en una situacion.	
+
+2)Preguntar implementacion de noroeste....
+	
+
+
+

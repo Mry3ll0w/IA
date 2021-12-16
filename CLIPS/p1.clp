@@ -65,8 +65,7 @@
 ;   G   H   I
 
 (defrule noroeste
-    (ubicacion ?b norte ?e)
-    (ubicacion ?b oeste ?c)
+   (ubicacion ?b norte ?e)(ubicacion ?b oeste ?c)
     =>
     (assert(ubicacion ?c noroeste ?e))
 )
