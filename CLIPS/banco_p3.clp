@@ -13,7 +13,7 @@
     (slot DNI )
     (slot Pin)
     (slot Intentos (default 3))
-    (slot Limite)
+    (slot Limite(default 3000))
     (slot Anno (default 2022))
     (slot valida (default false)(allowed-values false true))
 )
@@ -138,3 +138,33 @@
 
 )
 
+;2) Regla	Saldo_NoSuficiente:	Si	no	tiene	saldo	muestra	mensaje en	pantalla.
+(defrule Saldo_NoSuficiente
+    ?t <-(cuenta (Saldo ?s))
+    (test (<= ?s 0))
+    =>
+    (printout t "El Saldo es <= 0: " ?s crlf)
+)
+
+;3)Regla Comprueba_Limite1:	 Si	 supera	 el	 límite	 establecido	 por	 el	 banco	 muestra	
+;mensaje en	pantalla
+(defrule Comprueba_Limite1 
+    ?u <- (usuario(Cantidad ?c))
+    (test >= ?c 900); Limite establecido por el banco de forma predeterminada
+    =>
+    (printout t "Esta cantidad supera la permitida por el banco"crlf)
+    
+)
+
+;4) Lo mismo para limite 2 
+(defrule Comprueba_Limite2 
+    ?u <- (usuario(Cantidad ?c) (DNI ?udni))
+    ?t <- (tarjeta (DNI ?tdni) (Limite ?tlimite))
+    
+    (test (eq ?tdni ?udni))
+    (test >= ?c ?tlimite); Limite establecido por el banco de forma predeterminada
+
+    =>
+    (printout t "Esta cantidad supera la permitida por la tarjeta"crlf)
+    
+)
