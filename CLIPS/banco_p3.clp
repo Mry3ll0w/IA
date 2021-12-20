@@ -150,7 +150,7 @@
 ;mensaje en	pantalla
 (defrule Comprueba_Limite1 
     ?u <- (usuario(Cantidad ?c))
-    (test >= ?c 900); Limite establecido por el banco de forma predeterminada
+    (test (>= ?c 900)); Limite establecido por el banco de forma predeterminada
     =>
     (printout t "Esta cantidad supera la permitida por el banco"crlf)
     
@@ -162,9 +162,34 @@
     ?t <- (tarjeta (DNI ?tdni) (Limite ?tlimite))
     
     (test (eq ?tdni ?udni))
-    (test >= ?c ?tlimite); Limite establecido por el banco de forma predeterminada
+    (test (>= ?c ?tlimite)); Limite establecido por el banco de forma predeterminada
 
     =>
     (printout t "Esta cantidad supera la permitida por la tarjeta"crlf)
+    
+)
+
+;5)Regla Entrega_Dinero:	Muestra	mensaje	con	el	nuevo	saldo	y	la	cuenta	pasa	al	estado	
+;DineroEntregado.	Si	el	cajero	da	el	dinero	al	usuario	se	almacenará	internamente	este	
+;nuevo	saldo
+(deffunction resta (?a ?b)
+    
+    (bind ?res (- ?a ?b))
+
+    (return ?res)
+
+)
+
+(defrule Entrega_Dinero
+    ?u <- (usuario(Cantidad ?cant) (DNI ?udni))
+    ?c <- (cuenta (DNI ?cdni)(Saldo ?csaldo)(estado ?cest))
+   
+    ;Comprobamos que el usuario tenga acceso a esa cuenta
+    (test (eq ?cdni ?udni))
+    (test (>=  (resta ?csaldo ?cant) 0));EL resultado de sacar el saldo debe ser >= 0
+    =>
+    (printout t "Saldo disponible tras la operacion "?res crlf)
+    (modify ?c (estado dineroEntregado))
+    (modify ?c (Saldo (resta ?csaldo ?cant)))
     
 )
