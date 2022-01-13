@@ -55,9 +55,9 @@ tNodo *nodoInicial(){
 LISTA expandir(tNodo *nodo){
     unsigned op;
     LISTA sucesores=VACIA;
-    tNodo *nuevo=calloc(1,sizeof(tNodo));
+    tNodo *nuevo=calloc(1,sizeof(tNodo));//tNodo *nuevo =
     tEstado *s;
-    for (op=1; op<=NUM_OPERADORES;op++){
+    for (op=1; op<=NUM_OPERADORES;op++){//Recorre todas la operaciones
       if (esValido(op,nodo->estado)){
                         //s=(tEstado *)calloc(1,sizeof(tEstado));
           s=aplicaOperador(op,nodo->estado);

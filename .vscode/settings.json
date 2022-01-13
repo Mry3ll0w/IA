@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "jarra.h": "c"
+        "jarra.h": "c",
+        "stdlib.h": "c"
     }
 }

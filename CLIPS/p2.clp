@@ -16,15 +16,22 @@
 (deftemplate coche
     (slot modelo (type INTEGER) (allowed-values 0 1 2 3 4 5 )(default 0))
     (slot precio (type INTEGER) (default 13000))
-    (slot caballos (type INTEGER))
+    (slot caballos (type INTEGER)(default 80))
     (slot ABS (type SYMBOL) (allowed-values si no))
     (slot size_maletero(type SYMBOL)(allowed-values small medium large) (default large))
     (slot consumo (type FLOAT))
 )
 
 (deffacts datos 
-    (coche(modelo 1)(precio 12000)(size_maletero small)(caballos 65)(ABS no)(consumo 4.7))    
-    (coche(modelo 2)(precio 12500)(size_maletero small)(caballos 80)(ABS si)(consumo 4.9))
+    (coche
+        (modelo 1)
+        (precio 12000)
+        (size_maletero small)
+        (caballos 65)
+        (ABS no)
+        (consumo 4.7)
+    )    
+    (coche(modelo 2)(precio 12500)(size_maletero small)(ABS si)(consumo 4.9))
     (coche(modelo 3)(precio 13000)(size_maletero medium)(caballos 100)(ABS si)(consumo 7.8))
     (coche(modelo 4)(precio 14000)(size_maletero large)(caballos 125)(ABS si)(consumo 6.0))
     (coche(modelo 5)(precio 15000)(size_maletero small)(caballos 147)(ABS si)(consumo 8.5))
@@ -40,7 +47,7 @@
 
 ;DEFINICION DE UNA VARIABLE GLOBAL
 (defglobal 
-    ?*r_bugdet* = 0
+    ?*r_bugdet* = 0  ; *c caga*
     ?*r_cab* = 0
     ?*r_abs* = 0
     ?*r_maletero* = "small"

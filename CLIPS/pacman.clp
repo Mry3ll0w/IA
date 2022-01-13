@@ -40,8 +40,8 @@
     ?f <- (fantasma (posx ?px) (posy ?py))
     =>
     ;Pierde una vida y vuelve a pos 1,1 el pacman
-    (modify ?p (vidas (- ?fr 1)  )); vida -= 1
-    (modify ?p ((posx 1) (posy 1) )); Pos inicial
+    (modify ?p (vidas (- ?fr 1) )); vida -= 1
+    ;(modify ?p ((posx 1) (posy 1) )); Pos inicial
 )
 
 (defrule ganar
